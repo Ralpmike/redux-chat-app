@@ -38,9 +38,9 @@ export const { useGetPostsQuery, useGetPostQuery } = apiSlice
 
 
 const instance = axios.create({
-  baseURL: 'https://api.thedogapi.com/v1/',
+  baseURL: process.env.BASE_URL,
   headers: {
-    'x-api-key': 'live_f2OOioBjwGCFkwX65DbRUXfbzwR3rtCGrWvFRdvYC1sQRbLgO8ZD55EtQoxBPQLV',
+    'x-api-key': process.env.DOGS_API_KEY,
     'Content-Type': 'application/json'
   },
   timeout: 10000,
