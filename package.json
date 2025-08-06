@@ -6,6 +6,7 @@
     "@faker-js/faker": "^8",
     "@mswjs/data": "^0.16",
     "@reduxjs/toolkit": "^2.8.2",
+    "axios": "^1.11.0",
     "classnames": "^2.2.6",
     "date-fns": "^3",
     "mock-socket": "^9.0.3",

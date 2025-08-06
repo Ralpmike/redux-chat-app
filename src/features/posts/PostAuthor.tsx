@@ -2,7 +2,7 @@ import { useAppSelector } from '@/app/hooks/hooks'
 import { selectUserById } from '@/features/users/usersSlice'
 
 interface PostAuthorProps {
-  userId: string
+  userId: string | null
 }
 
 export const PostAuthor = ({ userId }: PostAuthorProps) => {

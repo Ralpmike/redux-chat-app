@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/app/store";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { sub } from 'date-fns'
+import { userLoggedOut } from "../auth/authSlice";
 
 export interface Reactions {
   thumbsUp: number
@@ -15,7 +16,7 @@ export interface Post {
   id: string;
   title: string;
   content: string
-  user: string
+  user: string | null
   date: string
   reactions: Reactions
 }
@@ -48,7 +49,7 @@ const postsSlice = createSlice({
       reducer: (state, action: PayloadAction<Post>) => {
         state.push(action.payload)
       },
-      prepare: (title: string, content: string, userId: string) => { //?to refine the action.payload
+      prepare: (title: string, content: string, userId: string | null) => { //?to refine the action.payload
         return {
           payload: {
             id: nanoid(),
@@ -79,6 +80,11 @@ const postsSlice = createSlice({
         existingPost.reactions[reaction]++
       }
     }
+  },
+  extraReducers: builder => {
+    builder.addCase(userLoggedOut, state => {
+      return []
+    })
   },
   selectors: {
     selectAllPosts: postsState => postsState,

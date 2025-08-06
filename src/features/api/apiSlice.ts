@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 
 import type { Post } from "../posts/postSlice"
+import axios from "axios"
 
 export type { Post }
 
@@ -33,3 +34,17 @@ export const apiSlice = createApi({
 })
 
 export const { useGetPostsQuery, useGetPostQuery } = apiSlice
+
+
+
+const instance = axios.create({
+  baseURL: 'https://api.thedogapi.com/v1/',
+  headers: {
+    'x-api-key': 'live_f2OOioBjwGCFkwX65DbRUXfbzwR3rtCGrWvFRdvYC1sQRbLgO8ZD55EtQoxBPQLV',
+    'Content-Type': 'application/json'
+  },
+  timeout: 10000,
+})
+
+
+export default instance
